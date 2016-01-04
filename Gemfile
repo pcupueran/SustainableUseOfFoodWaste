@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 gem 'jquery-rails'
 gem 'pg'
+gem 'haml-rails'
 
 
 group :development, :test do
