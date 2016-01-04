@@ -8,4 +8,4 @@ Scenario: A charity signs in
   When the charity fills the valid email and password
     And the charity signs in
   Then the charity is taken to the homepage
-    And the charity sees a notice "You have successfully signed in"
+    And the charity sees a notice "Signed in successfully."
