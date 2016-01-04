@@ -8,10 +8,11 @@ gem 'haml-rails'
 
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry-byebug'
 end
 
 group :test do
+  gem 'rspec-rails', '~> 3.0'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
