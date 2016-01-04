@@ -4,6 +4,7 @@ gem 'rails', '4.2.5'
 gem 'jquery-rails'
 gem 'pg'
 gem 'devise'
+gem 'haml-rails'
 
 
 group :development, :test do
