@@ -18,7 +18,6 @@ RSpec.describe ProfilesController, type: :controller do
       end
 
       it "loads the expected profile" do
-        binding.pry
         expect(assigns(:profile)).to eq(@profile)
       end
     end
