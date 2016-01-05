@@ -1,5 +1,5 @@
 Given(/^the charity is in the sign in page$/) do
-  visit new_charity_session_path
+  visit new_user_session_path
 end
 
 Given(/^the charity is already registered$/) do
