@@ -2,7 +2,7 @@ Given(/^a profile exist$/) do
   @email = Faker::Internet.email
   @charity = Charity.create!(email: @email, password: "password")
   @profile = Profile.create!(organization_name: "Food for everyone", user: @charity)
-  @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", user: @charity)
+  @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", profile: @profile)
 end
 
 Given(/^a user is in the editing profile page$/) do
@@ -17,11 +17,8 @@ When(/^a user updates his\/her profile$/) do
   click_button "Update profile"
 end
 
-Then(/^the user's address is updated$/) do
-  expect(@charity.address.street).to eq("Oxford Street")
+Then(/^the profile's address is updated$/) do
+  expect(Profile.first.address.street).to eq("Oxford Street")
 end
 
-Then(/^a flash message "(.*?)" is shown$/) do |message|
-  expect(page.has_content?(message)).to be true
-end
 
