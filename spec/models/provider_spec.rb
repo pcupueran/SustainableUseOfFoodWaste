@@ -16,10 +16,19 @@ RSpec.describe Provider, type: :model do
       expect(Provider.first.profile.organization_name).to eq("Pret a manger")
     end
 
-    it "receives an email when a booking to collect food is created" do
-      @contribution = Contribution.create(provider: @provider)
-      @booking = Booking.create!(contribution: @contribution)
-      expect(ActionMailer::Base.deliveries.count).to eq(1)
+    describe "receives an email" do
+
+      before do
+        @email = Faker::Internet.email
+        @profile = Profile.create!(organization_name: "Food for everyone")
+        @charity = Charity.create!(email: @email, password: "password", profile: @profile)
+        @contribution = Contribution.create(provider: @provider)
+        @booking = Booking.create!(contribution: @contribution, charity: @charity)
+      end
+
+      it "receives an email when a booking to collect food is created" do
+        expect(ActionMailer::Base.deliveries.count).to eq(1)
+      end
     end
   end
 end
