@@ -1,5 +1,19 @@
 %h1 Edit profile
 = form_for @profile do |f|
-  = f.label :organization_name
-  = f.text_field :organization_name
+  %fieldset
+    = f.label :organization_name
+    = f.text_field :organization_name
+  %fieldset
+    = f.label :address
+    = f.fields_for :address do |a|
+      = a.label :door_number
+      = a.text_field :door_number, value: @profile.address.door_number
+      = a.label :street
+      = a.text_field :street, value: @profile.address.street
+      = a.label :city
+      = a.text_field :city, value: @profile.address.city
+      = a.label :country
+      = a.text_field :country, value: @profile.address.country
+      = a.label :postcode
+      = a.text_field :postcode, value: @profile.address.postcode
   = f.submit "Update profile"
