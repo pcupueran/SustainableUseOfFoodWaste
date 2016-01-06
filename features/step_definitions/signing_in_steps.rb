@@ -4,7 +4,8 @@ end
 
 Given(/^the charity is already registered$/) do
   @email = Faker::Internet.email
-  Charity.create!(:email => @email, :password => "password")
+  @profile = Profile.create!(organization_name: "Food for everyone")
+  Charity.create!(:email => @email, :password => "password", :profile => @profile)
 end
 
 When(/^the charity fills the valid email and password$/) do

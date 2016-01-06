@@ -6,8 +6,8 @@ RSpec.describe Profile, type: :model do
     describe "Charity" do
       before do
         @email = Faker::Internet.email
-        @charity = Charity.create!(email: @email, password: "password")
-        @profile = Profile.create!(organization_name: "Food for everyone", user: @charity)
+        @profile = Profile.create!(organization_name: "Food for everyone")
+        @charity = Charity.create!(email: @email, password: "password", profile: @profile)
         @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", profile: @profile)
       end
 
@@ -24,8 +24,8 @@ RSpec.describe Profile, type: :model do
     describe "Provider" do
       before do
         @email_provider = Faker::Internet.email
-        @provider = Provider.create!(email: @email_provider, password: "password")
-        @profile_provider = Profile.create!(organization_name: "Pret a manger", user: @provider)
+        @profile_provider = Profile.create!(organization_name: "Pret a manger")
+        @provider = Provider.create!(email: @email_provider, password: "password", profile: @profile_provider)
         @address_provider = Address.create!(door_number: "3", street: "Oxford Street", city: "London", country: "UK", postcode: "SW16 4RN", profile: @profile_provider)
       end
       it "belongs to a user" do

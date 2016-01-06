@@ -4,9 +4,8 @@ RSpec.describe Provider, type: :model do
   describe "Provider" do
     before do
       @email = Faker::Internet.email
-      @provider = Provider.create!(email: @email, password: "password")
-      @profile = Profile.create!(organization_name: "Pret a manger", user: @provider)
-
+      @profile = Profile.new(organization_name: "Pret a manger")
+      @provider = Provider.create!(email: @email, password: "password", profile: @profile)
     end
 
     it "is a type of User" do
