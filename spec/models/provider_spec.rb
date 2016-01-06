@@ -15,5 +15,10 @@ RSpec.describe Provider, type: :model do
     it "has one profile" do
       expect(Provider.first.profile.organization_name).to eq("Pret a manger")
     end
+
+    it "receives an email when a booking to collect food is created" do
+      @booking = Booking.create!
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+    end
   end
 end

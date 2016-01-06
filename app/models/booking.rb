@@ -1,5 +1,5 @@
 class Booking < ActiveRecord::Base
-  has_one :contribution
+  belongs_to :contribution
   after_save :notify_provider
 
   private
