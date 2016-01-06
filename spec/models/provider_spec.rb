@@ -17,7 +17,8 @@ RSpec.describe Provider, type: :model do
     end
 
     it "receives an email when a booking to collect food is created" do
-      @booking = Booking.create!
+      @contribution = Contribution.create(provider: @provider)
+      @booking = Booking.create!(contribution: @contribution)
       expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
   end
