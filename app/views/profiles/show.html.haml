@@ -7,7 +7,7 @@
   %dt
     Organization name
   %dd
-    = @profile.organization_name
+    = @profile.user.organization_name
   - if @profile.address.nil?
     = link_to "Add address", edit_profile_path(@profile)
   - else

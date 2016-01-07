@@ -1,8 +1,9 @@
 %h1 Edit profile
 = form_for @profile do |f|
   %fieldset
-    = f.label :organization_name
-    = f.text_field :organization_name
+    = f.fields_for :user do |u|
+      = u.label :organization_name
+      = u.text_field :organization_name, value: @profile.user.organization_name
   %fieldset
     = f.label :address
     = f.fields_for :address do |a|
