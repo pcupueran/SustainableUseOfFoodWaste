@@ -13,3 +13,15 @@ Scenario: provider edits address in its profile
   When a user changes the address information
     And a user updates his/her profile
   Then the profile's address is updated
+
+Scenario: charity edits its profile
+  Given a profile for charity exist
+    And charity is in the show profile page
+    And charity edits its profile
+  Then the edit profile page is shown
+
+Scenario: provider edits its profile
+  Given a profile for charity exist
+    And provider is in the show profile page
+    And provider edits its profile
+  Then the edit profile page is shown
