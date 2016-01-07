@@ -4,6 +4,8 @@
     = f.fields_for :user do |u|
       = u.label :organization_name
       = u.text_field :organization_name, value: @profile.user.organization_name
+      = u.label :email
+      = u.text_field :email, value: @profile.user.email
   %fieldset
     = f.label :address
     = f.fields_for :address do |a|
