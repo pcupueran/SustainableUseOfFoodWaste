@@ -4,8 +4,7 @@ RSpec.describe Provider, type: :model do
   describe "Provider" do
     before do
       @email = Faker::Internet.email
-      @profile = Profile.new(organization_name: "Pret a manger")
-      @provider = Provider.create!(email: @email, password: "password", profile: @profile)
+      @provider = User.create!(organization_name: "Pret a manger", email: @email, password: "password", type: "Provider")
     end
 
     it "is a type of User" do
@@ -13,15 +12,15 @@ RSpec.describe Provider, type: :model do
     end
 
     it "has one profile" do
-      expect(Provider.first.profile.organization_name).to eq("Pret a manger")
+      expect(Provider.first.profile.user.organization_name).to eq("Pret a manger")
     end
 
     describe "receives an email" do
 
       before do
         @email = Faker::Internet.email
-        @profile = Profile.create!(organization_name: "Food for everyone")
-        @charity = Charity.create!(email: @email, password: "password", profile: @profile)
+        @profile = Profile.create!()
+        @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
         @contribution = Contribution.create(provider: @provider)
         @booking = Booking.create!(contribution: @contribution, charity: @charity)
       end

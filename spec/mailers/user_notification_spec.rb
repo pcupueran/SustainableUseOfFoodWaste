@@ -6,8 +6,7 @@ RSpec.describe UserNotification, type: :mailer do
 
     before do
       @email = Faker::Internet.email
-      @profile = Profile.new(organization_name: "Pret a manger")
-      @provider = Provider.create!(email: @email, password: "password", profile: @profile)
+      @provider = User.create!(organization_name: "Pret a manger", email: @email, password: "password", type: "Provider")
     end
 
     it "has as subject" do

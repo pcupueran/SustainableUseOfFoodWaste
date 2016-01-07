@@ -16,12 +16,14 @@ Scenario: provider edits address in its profile
 
 Scenario: charity edits its profile
   Given a profile for charity exist
+    And a user is signed in
     And charity is in the show profile page
     And charity edits its profile
   Then the edit profile page is shown
 
 Scenario: provider edits its profile
   Given a profile for charity exist
+    And a user is signed in
     And provider is in the show profile page
     And provider edits its profile
   Then the edit profile page is shown

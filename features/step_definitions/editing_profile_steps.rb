@@ -1,11 +1,11 @@
 Given(/^a profile for charity exist$/) do
   @email = Faker::Internet.email
-  @user = User.create!(email: @email, password: "password", type: "Charity")
+  @user = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
   @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", profile: @user.profile)
 end
 Given(/^a profile for provider exist$/) do
   @email = Faker::Internet.email
-  @user = User.create!(email: @email, password: "password", type: "Provider")
+  @user = User.create!(organization_name: "Preta a manger", email: @email, password: "password", type: "Provider")
   @address = Address.create!(door_number: "3", street: "Tottenham High Road", city: "London", country: "UK", postcode: "SW16 4RN", profile: @user.profile)
 end
 
@@ -46,3 +46,9 @@ Given(/^charity edits its profile$/) do
   click_on "Edit profile"
 end
 
+Given(/^a user is signed in$/) do
+  visit new_user_session_path
+  fill_in "Email", :with => @user.email
+  fill_in "Password", :with => @user.password
+  click_button "Log in"
+end

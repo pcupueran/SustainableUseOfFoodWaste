@@ -4,13 +4,12 @@ RSpec.describe Address, type: :model do
   describe "Address" do
     before do
       @email = Faker::Internet.email
-      @profile = Profile.new(organization_name: "Food for everyone")
-      @charity = Charity.create!(email: @email, password: "password", profile: @profile)
-      @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", profile: @profile)
+      @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
+      @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", profile: @charity.profile)
     end
 
     it "belongs to a profile" do
-      expect(Address.first.profile.organization_name).to eq(@profile.organization_name)
+      expect(Address.first.profile.user.organization_name).to eq(@charity.organization_name)
     end
   end
 end
