@@ -18,3 +18,5 @@
       = "Country: #{ @profile.address.country}"
     %span
       = "Postcode: #{ @profile.address.postcode}"
+
+= link_to "Edit profile", edit_profile_path(@profile)
