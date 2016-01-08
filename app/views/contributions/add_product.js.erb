@@ -1,0 +1,12 @@
+console.log(i);
+$("#products-list").append(
+"<li class='product'>" +
+  "<label for='contribution_products_attributes_" + i + "_quantity'>Quantity</label>" +
+  "<input type='text' name='contribution[products_attributes][" + i + "][quantity]' id='contribution_products_attributes_" + i + "_quantity'>" +
+  "<label for='contribution_products_attributes_" + i + "_product_name'>Product name</label>" +
+  "<input type='text' name='contribution[products_attributes][" + i + "][product_name]' id='contribution_products_attributes_" + i + "_product_name'>" +
+  "<label for='contribution_products_attributes_" + i + "_perishable'>Perishable</label>" +
+  "<input name='contribution[products_attributes][" + i + "][perishable]' type='hidden' value='" + i + "'><input type='checkbox' value='1' name='contribution[products_attributes][" + i + "][perishable]' id='contribution_products_attributes_" + i + "_perishable'>" +
+"</li>"
+);
+i++;
