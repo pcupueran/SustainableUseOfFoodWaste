@@ -2,17 +2,16 @@
 %h2 Products
 
 = form_for ([:user, @contribution]) do |f|
-    = f.fields_for :products_attributes do |p|
-      %ul
-        %li{ id: "product1"}
-          = p.label :quantity
-          = p.text_field :quantity
+  = f.fields_for :products do |p|
+    = p.label :quantity
+    = p.text_field :quantity
 
-          = p.label :product_name
-          = p.text_field :product_name
+    = p.label :product_name
+    = p.text_field :product_name
 
-          = p.label :perishable
-          = p.check_box :perishable
+    = p.label :perishable
+    = p.check_box :perishable
+
   = link_to "Add product", add_product_user_contributions_path, :remote => true
   = f.submit "Add contribution"
 
