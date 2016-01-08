@@ -1,0 +1,9 @@
+%h1 Details of your contribution
+- @contribution.products.each do |p|
+  %fieldset
+    %span
+      = "Quantity #{p.quantity}"
+    %span
+      = "Product Name: #{p.product_name}"
+    %span
+      = "perishable #{p.perishable}"
