@@ -9,8 +9,9 @@ Then(/^the page to add a contribution is shown$/) do
 end
 
 When(/^a provider fills the valid data$/) do
-    fill_in "Quantity", :with => 3
-    fill_in "Product name", :with => "Tuna cans"
+  @i ||= 0
+  fill_in "Quantity", :with => 3
+  fill_in "Product name", :with => "Tuna cans"
 end
 
 When(/^a provider creates contribution$/) do
@@ -34,15 +35,14 @@ When(/^a provider add a product$/) do
 end
 
 Then(/^a new entrance for a product is shown$/) do
-  expect(page).to have_css("#product-2")
+  expect(page).to have_css(".product", count: 2)
 end
 
 When(/^the provider fills the data for the second product entry$/) do
-  within("#product-2") do
-    fill_in "Quantity", :with => 5
-    fill_in "Product name", :with => "Chicken sandwiches"
-    check "Perishable"
-  end
+  @i += 1
+  fill_in "contribution_products_attributes_#{@i}_quantity", :with => 5
+  fill_in "contribution_products_attributes_#{@i}_product_name", :with => "Chicken sandwiches"
+  check "contribution_products_attributes_#{@i}_perishable"
 end
 
 Then(/^a contribution with two products is created$/) do
