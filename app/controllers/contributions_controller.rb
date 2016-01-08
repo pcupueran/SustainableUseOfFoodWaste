@@ -15,6 +15,11 @@ class ContributionsController < ApplicationController
   def show
     @contribution = Contribution.find(params[:id])
   end
+
+  def index
+    @contributions = Contribution.all
+  end
+
   def add_product
     Product.new
   end
@@ -23,4 +28,5 @@ class ContributionsController < ApplicationController
   def contribution_params
     params.require(:contribution).permit(:products_attributes => [:quantity, :product_name, :perishable])
   end
+
 end
