@@ -1,2 +1,5 @@
 %h1 Homepage Using Food Waste
-= link_to "Add contribution", new_user_contribution_path(:user_id => current_user.id)
+- if current_user.type == "Provider"
+  = link_to "Add contribution", new_user_contribution_path(:user_id => current_user.id)
+- elsif current_user.type == "Charity"
+  = link_to "Contributions available", user_contributions_path(:user_id => current_user.id)
