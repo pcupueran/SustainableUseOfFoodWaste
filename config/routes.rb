@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :providers, :as => "users", :only => [:show] do
-    resources :contributions, :expect => [:destroy, :edit] do
+    resources :contributions, :only => [:new, :create, :show] do
       collection do
         get :add_product
       end
     end
   end
+
+  resources :contributions, :only => [:index]
 
   resources :profiles, :only =>[:edit, :update, :show]
   root to: "home#index"
