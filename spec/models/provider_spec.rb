@@ -21,7 +21,7 @@ RSpec.describe Provider, type: :model do
         @email = Faker::Internet.email
         @profile = Profile.create!()
         @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
-        @contribution = Contribution.create(provider: @provider)
+        @contribution = Contribution.create(user: @provider)
         @booking = Booking.create!(contribution: @contribution, charity: @charity)
       end
 

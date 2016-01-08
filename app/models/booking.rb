@@ -6,7 +6,7 @@ class Booking < ActiveRecord::Base
   private
   def notify_provider
     @charity = self.charity
-    @provider = self.contribution.provider
+    @provider = self.contribution.user
     UserNotification.notification(@provider, @charity).deliver_now
   end
 end
