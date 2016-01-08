@@ -20,6 +20,6 @@ Then(/^the charity is taken to the homepage$/) do
   expect(current_path).to eq(root_path)
 end
 
-Then(/^the flash message "(.*?)" is shown$/) do |arg1|
-  expect(page.has_content?(message)).to be true
+Then(/^the flash message "(.*?)" is shown$/) do |message|
+  expect(page).to have_content(message)
 end
