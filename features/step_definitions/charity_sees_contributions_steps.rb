@@ -29,10 +29,10 @@ When(/^the charity sees contributions$/) do
 end
 
 Then(/^the charity is taken to the contribution index page$/) do
-  expect(current_path).to eq(user_contributions(user_id: @provider.id))
+  expect(current_path).to eq(contributions_path)
 end
 
 Then(/^a list of contributions is shown$/) do
-  expect(page).to have_content("Contribution donate by #{@provider.organization_name}")
+  expect(page).to have_content("Contribution donated by #{@provider.organization_name}")
 end
 
