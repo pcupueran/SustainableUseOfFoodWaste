@@ -5,11 +5,9 @@ RSpec.describe Product, type: :model do
     before do
       @email = Faker::Internet.email
       @provider = User.create!(organization_name: "Pret a manger", email: @email, password: "password", type: "Provider")
-      @product_1 = Product.new(quantity: 3, product_name: "Tuna cans", perishable: "0")
-      @product_2 = Product.new(quantity: 5, product_name: "Chicken sandwiches", perishable: "1")
-      Contribution.create!(user: @provider, contribution_products_attributes: [
-        {product: @product_1},
-        {product: @product_2}
+      Contribution.create!(user: @provider, products_attributes: [
+        {quantity: 3, product_name: "Tuna cans", perishable: "0"},
+        {quantity: 5, product_name: "Chicken sandwiches", perishable: "1"}
       ])
     end
 
