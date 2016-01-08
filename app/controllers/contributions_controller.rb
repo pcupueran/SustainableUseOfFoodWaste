@@ -19,6 +19,6 @@ class ContributionsController < ApplicationController
 
   private
   def contribution_params
-    params.require(:contribution).permit(:contribution_products_attributes => [:product_attributes => [:quantity, :product_name, :perishable]])
+    params.require(:contribution).permit(:product_attributes => [:quantity, :product_name, :perishable])
   end
 end
