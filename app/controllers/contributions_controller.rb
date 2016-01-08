@@ -5,18 +5,17 @@ class ContributionsController < ApplicationController
   end
 
   def create
-    binding.pry
     @contribution = Contribution.new(user_id: params[:user_id])
     @contribution.assign_attributes(contribution_params)
     @contribution.save!
-    redirect_to user_contribution_path(@contribution)
+    flash[:notice] = "A contribution has been created"
+    redirect_to user_contribution_path(@contribution, user_id: params[:user_id])
   end
 
   def show
     @contribution = Contribution.find(params[:id])
   end
   def add_product
-    binding.pry
     Product.new
   end
 
