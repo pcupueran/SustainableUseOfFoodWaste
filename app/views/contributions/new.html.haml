@@ -2,8 +2,7 @@
 %h2 Products
 
 = form_for ([:user, @contribution]) do |f|
-  = f.fields_for :contribution_products_attributes do |cp|
-    = cp.fields_for :product_attributes do |p|
+    = f.fields_for :products_attributes do |p|
       %ul
         %li{ id: "product1"}
           = p.label :quantity
