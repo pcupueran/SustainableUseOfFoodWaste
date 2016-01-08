@@ -9,6 +9,7 @@ gem 'haml-rails'
 
 group :development, :test do
   gem 'pry-byebug'
+  gem 'poltergeist'
 end
 
 group :test do
