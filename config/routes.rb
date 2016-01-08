@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :providers, :as => "users", :only => [:show] do
-    resources :contributions, :only => [:new, :create, :show] do
+    resources :contributions, :expect => [:destroy, :edit] do
       collection do
         get :add_product
       end
