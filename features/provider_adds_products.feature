@@ -10,7 +10,7 @@ Scenario: Provider creates a contribution with one product
     And the provider is taken to the show contribution page
     And the flash message "A contribution has been created" is shown
 
-@wip @javascript
+@javascript
 Scenario: Provider creates a contribution with several products
   Given a profile for provider exist
     And a user is signed in
