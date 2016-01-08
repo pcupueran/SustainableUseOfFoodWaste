@@ -3,19 +3,24 @@ When(/^a provider adds contribution$/) do
 end
 
 Then(/^the page to add a contribution is shown$/) do
-  expect(current_path).to eq(new_user_contribution_path)
+  expect(current_path).to eq(new_user_contribution_path(@user))
   expect(page).to have_content("Your contribution helps")
   expect(page).to have_content("Products")
 end
 
 When(/^a provider fills the valid data$/) do
-  click_button "Add a product"
-  fill_in "Quantity", :with => 3
-  fill_in "Product Name", :with => "Tuna cans"
-  check "Perishable"
-  click_button "Add a product"
-  fill_in "Quantity", :with => 5
-  fill_in "Product Name", :with => "Chicken sandwiches"
+  # click_button "Add a product"
+  within("#product1") do
+    fill_in "Quantity", :with => 3
+    fill_in "Product name", :with => "Tuna cans"
+  end
+
+  # within("#product2") do
+  #   fill_in "Quantity", :with => 5
+  #   fill_in "Product name", :with => "Chicken sandwiches"
+  #   check "Perishable"
+  # end
+  # click_button "Add a product"
 end
 
 When(/^a provider creates contribution$/) do

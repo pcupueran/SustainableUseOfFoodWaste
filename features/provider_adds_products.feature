@@ -1,5 +1,5 @@
 Feature: Provider creates a contribution and adds products
-
+@wip
 Scenario: Provider creates a contribution
   Given a profile for provider exist
     And a user is signed in
