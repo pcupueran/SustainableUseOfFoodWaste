@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :providers, :as => "users", :only => [:show] do
-    resources :contributions, :only => [:new, :create]
+    resources :contributions, :only => [:new, :create, :show] do
+      collection do
+        get :add_product
+      end
+    end
   end
+
   resources :profiles, :only =>[:edit, :update, :show]
   root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
