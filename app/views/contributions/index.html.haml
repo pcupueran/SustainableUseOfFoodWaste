@@ -1,0 +1,16 @@
+- @contributions.each do |contribution|
+  %ul
+    %li
+      %fieldset
+        %h2
+          = "Contribution donated by #{contribution.user.organization_name}"
+        - contribution.products.each do |p|
+          %ul#products-list
+            %li.product
+              %span
+                = "Quantity #{p.quantity}"
+              %span
+                = "Product Name: #{p.product_name}"
+              %span
+                = "perishable #{p.perishable}"
+
