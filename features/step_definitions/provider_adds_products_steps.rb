@@ -52,3 +52,23 @@ Then(/^a contribution with two products is created$/) do
   expect(Contribution.first.products.second.perishable).to eq(true)
   expect(Product.all.length).to eq(2)
 end
+
+When(/^a provider does not add collection time and date$/) do
+  select('Choose day', :from => "contribution[collection_date(3i)]")
+  select('Choose month', :from => "contribution[collection_date(2i)]")
+  select('Choose year', :from => "contribution[collection_date(1i)]")
+end
+
+Then(/^the contribution is not created$/) do
+  expect(Contribution.all.length).to eq(0)
+end
+
+Then(/^the error message "(.*?)" is shown$/) do |error_message|
+  expect(page).to have_content("Contribution cannot be created without a collection date and time")
+end
+
+When(/^a provider adds collection time and date$/) do
+  select('5', :from => 'Choose day')
+  select('2', :from => 'Choose month')
+  select('2016', :from => 'Choose year')
+end
