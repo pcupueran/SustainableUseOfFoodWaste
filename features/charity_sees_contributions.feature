@@ -1,6 +1,5 @@
 Feature: Charity sees contributions
 
-@wip
 Scenario: A charity sees list of contributions
 Given the charity is already registered
   And a user is signed in

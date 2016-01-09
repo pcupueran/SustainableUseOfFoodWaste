@@ -1,18 +1,19 @@
 Given(/^some contributions exist$/) do
   @email = Faker::Internet.email
+  @date = Faker::Date.forward(7)
   @provider = User.create!(organization_name: "Pret a manger", email: @email, password: "password", type: "Provider")
-  Contribution.create!(user: @provider, products_attributes: [
+  Contribution.create!(collection_date: @date, user: @provider, products_attributes: [
     {quantity: 3, product_name: "Tuna cans", perishable: "0"},
     {quantity: 5, product_name: "Chicken sandwiches", perishable: "1"}
   ])
 
-  Contribution.create!(user: @provider, products_attributes: [
+  Contribution.create!(collection_date: @date, user: @provider, products_attributes: [
     {quantity: 3, product_name: "Tuna cans", perishable: "0"},
     {quantity: 5, product_name: "Fruit salads", perishable: "1"},
     {quantity: 5, product_name: "Chicken sandwiches", perishable: "1"}
   ])
 
-  Contribution.create!(user: @provider, products_attributes: [
+  Contribution.create!(collection_date: @date, user: @provider, products_attributes: [
     {quantity: 3, product_name: "Tuna cans", perishable: "0"},
     {quantity: 4, product_name: "Chicken sandwiches", perishable: "1"},
     {quantity: 5, product_name: "Bananas", perishable: "1"},
