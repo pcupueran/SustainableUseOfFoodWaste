@@ -7,10 +7,17 @@ class ContributionsController < ApplicationController
   def create
     @contribution = Contribution.new(user_id: params[:user_id])
     @contribution.assign_attributes(contribution_params)
-    @contribution.save!
-    flash[:notice] = "A contribution has been created"
-    redirect_to user_contribution_path(@contribution, user_id: params[:user_id])
+
+    begin
+      @contribution.save!
+      flash[:notice] = "A contribution has been created"
+      redirect_to user_contribution_path(@contribution, user_id: params[:user_id])
+    rescue
+      flash[:alert] = "Contribution cannot be created without a collection date and time"
+      render :new
+    end
   end
+
 
   def show
     @contribution = Contribution.find(params[:id])
@@ -26,7 +33,7 @@ class ContributionsController < ApplicationController
 
   private
   def contribution_params
-    params.require(:contribution).permit(:products_attributes => [:quantity, :product_name, :perishable])
+    params.require(:contribution).permit(:collection_date, :products_attributes => [:quantity, :product_name, :perishable])
   end
 
 end
