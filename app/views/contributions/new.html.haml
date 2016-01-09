@@ -14,6 +14,8 @@
 
           = p.label :perishable
           = p.check_box :perishable
+    = f.label :collection_date
+    = f.date_select(:collection_date, order: [:day, :month, :year], prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, start_year: Time.now.year)
 
   = link_to "Add product", add_product_user_contributions_path, :remote => true
   = f.submit "Add contribution"
