@@ -13,6 +13,19 @@ RSpec.describe Address, type: :model do
     end
 
     describe "Geolocation" do
+      Geocoder::Lookup::Test.add_stub(
+        "35 Pelham Road, N22 6LN, London, UK", [
+          {
+            'latitude'     => 51.5951093,
+            'longitude'    => -0.1067676,
+            'address'      => '35 Pelham Rd, Wood Green, London N22 6LN, UK',
+            'city'         => 'London',
+            'postal_code'  => 'N22 6LN',
+            'country'      => 'United Kingdom',
+            'country_code' => 'UK'
+          }
+        ]
+      )
 
       it "builds a string for geocoding" do
         expect(@address.geocode_string).to eq('35 Pelham Road, N22 6LN, London, UK')
