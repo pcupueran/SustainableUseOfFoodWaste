@@ -1,6 +1,13 @@
 %h1 Your contribution helps
 %h2 Products
 
+%p Contribution cannot be created because the following fields are required
+- if @contribution.errors.messages.length
+  - @contribution.errors.messages.each do |key, value|
+    %ul#errors
+      %li.field-required
+        = "#{key.to_s.capitalize!.gsub('_', " ")} " << value[0]
+
 = form_for ([:user, @contribution]) do |f|
   %fieldset
     = f.fields_for :products do |p|
