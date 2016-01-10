@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'devise'
 gem 'haml-rails'
+gem 'geocoder'
 
 
 group :development, :test do
