@@ -5,8 +5,9 @@ RSpec.describe Product, type: :model do
     before do
       @email = Faker::Internet.email
       @date = Faker::Date.forward(7)
+      @time = Faker::Time.forward(7)
       @provider = User.create!(organization_name: "Pret a manger", email: @email, password: "password", type: "Provider")
-      Contribution.create!(collection_date: @date, user: @provider, products_attributes: [
+      Contribution.create!(collection_date: @date, collection_time: @time, user: @provider, products_attributes: [
         {quantity: 3, product_name: "Tuna cans", perishable: "0"},
         {quantity: 5, product_name: "Chicken sandwiches", perishable: "1"}
       ])
