@@ -1,4 +1,23 @@
-Given(/^a profile for charity exist$/) do
+Given(/^a profile for charity exists$/) do
+  Geocoder::Lookup::Test.add_stub(
+    "35 Lansdowne Road, W11 2LQ, London, UK", [
+      {
+        'latitude'     => 51.51055969999999,
+        'longitude'    => -0.2077987,
+        'address'      => '35 Lansdowne Rd, London W11, UK',
+        'city'         => 'London',
+        'postal_code'  => 'W11 2LQ',
+        'country'      => 'United Kingdom',
+        'country_code' => 'UK'
+      }
+    ]
+  )
+  @email = Faker::Internet.email
+  @user = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
+  @address = Address.create!(door_number: "35", street: "Lansdowne Road", city: "London", country: "UK", postcode: "W11 2LQ", profile: @user.profile)
+end
+Given(/^a profile for provider exists$/) do
+
   Geocoder::Lookup::Test.add_stub(
     "35 Pelham Road, N22 6LN, London, UK", [
       {
@@ -13,27 +32,8 @@ Given(/^a profile for charity exist$/) do
     ]
   )
   @email = Faker::Internet.email
-  @user = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
-  @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N22 6LN", profile: @user.profile)
-end
-Given(/^a profile for provider exist$/) do
-  Geocoder::Lookup::Test.add_stub(
-    "35 Lansdowne Road, W11 2LQ, London, UK", [
-      {
-        'latitude'     => 51.51055969999999,
-        'longitude'    => -0.2077987,
-        'address'      => '35 Lansdowne Rd, London W11, UK',
-        'city'         => 'London',
-        'postal_code'  => 'W11 2LQ',
-        'country'      => 'United Kingdom',
-        'country_code' => 'UK'
-      }
-    ]
-  )
-
-  @email = Faker::Internet.email
   @user = User.create!(organization_name: "Preta a manger", email: @email, password: "password", type: "Provider")
-  @address = Address.create!(door_number: "35", street: "Lansdowne Road", city: "London", country: "UK", postcode: "W11 2LQ", profile: @user.profile)
+  @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N22 6LN", profile: @user.profile)
 end
 
 Given(/^a user is in the editing profile page$/) do

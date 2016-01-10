@@ -1,7 +1,7 @@
 Feature: Provider creates a contribution and adds products and collection details
 
 Background:
-  Given a profile for provider exist
+  Given a profile for provider exists
     And a user is signed in
   When a provider adds contribution
   Then the page to add a contribution is shown
