@@ -13,7 +13,6 @@ class ContributionsController < ApplicationController
       flash[:notice] = "A contribution has been created"
       redirect_to user_contribution_path(@contribution, user_id: params[:user_id])
     rescue
-      flash[:alert] = "Contribution cannot be created without a collection date and time"
       render :new
     end
   end
