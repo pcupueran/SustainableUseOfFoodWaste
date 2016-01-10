@@ -7,7 +7,6 @@ class ContributionsController < ApplicationController
   def create
     @contribution = Contribution.new(user_id: params[:user_id])
     @contribution.assign_attributes(contribution_params)
-
     begin
       @contribution.save!
       flash[:notice] = "A contribution has been created"
@@ -32,7 +31,7 @@ class ContributionsController < ApplicationController
 
   private
   def contribution_params
-    params.require(:contribution).permit(:collection_date, :products_attributes => [:quantity, :product_name, :perishable])
+    params.require(:contribution).permit(:collection_date, :collection_time, :products_attributes => [:quantity, :product_name, :perishable])
   end
 
 end
