@@ -5,11 +5,31 @@ RSpec.describe Address, type: :model do
     before do
       @email = Faker::Internet.email
       @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
-      @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", profile: @charity.profile)
+      @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N22 6LN", profile: @charity.profile)
     end
 
     it "belongs to a profile" do
       expect(Address.first.profile.user.organization_name).to eq(@charity.organization_name)
+    end
+
+    describe "Geolocation" do
+
+      it "builds a string for geocoding" do
+        expect(@address.geocode_string).to eq('35 Pelham Road, N22 6LN, London, UK')
+      end
+
+      it "geocodes an geocode_string" do
+        @address.geocode
+
+        expect(@address.latitude).to eq(51.5951093)
+        expect(@address.longitude).to eq(-0.1067676)
+      end
+
+      it "geocodes on save" do
+        @address.save!
+        expect(@address.latitude).to eq(51.5951093)
+        expect(@address.longitude).to eq(-0.1067676)
+      end
     end
   end
 end
