@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contributions, :only => [:index]
+  resources :contributions, :only => [:index] do
+    collection do
+      get :search
+    end
+  end
 
   resources :profiles, :only =>[:edit, :update, :show]
   root to: "home#index"
