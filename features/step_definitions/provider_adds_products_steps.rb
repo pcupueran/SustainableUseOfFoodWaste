@@ -73,3 +73,12 @@ When(/^a provider adds collection date$/) do
   select('2016', :from => "contribution[collection_date(1i)]")
 end
 
+When(/^a provider does not add collection time$/) do
+  select('Choose hour', :from => "contribution[collection_time(4i)]")
+  select('Choose minute', :from => "contribution[collection_time(5i)]")
+end
+
+Given(/^a provider adds collection time$/) do
+  select('18', :from => "contribution[collection_time(4i)]")
+  select('15', :from => "contribution[collection_time(5i)]")
+end
