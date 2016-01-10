@@ -68,7 +68,7 @@ Then(/^the error message "(.*?)" is shown$/) do |error_message|
 end
 
 When(/^a provider adds collection time and date$/) do
-  select('5', :from => 'Choose day')
-  select('2', :from => 'Choose month')
-  select('2016', :from => 'Choose year')
+  select('10', :from => "contribution[collection_date(3i)]")
+  select('January', :from => "contribution[collection_date(2i)]")
+  select('2016', :from => "contribution[collection_date(1i)]")
 end
