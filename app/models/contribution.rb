@@ -3,5 +3,5 @@ class Contribution < ActiveRecord::Base
   belongs_to :user
   has_many :products
   accepts_nested_attributes_for :products
-  validates :collection_date, presence: :true
+  validates :collection_date, :collection_time, presence: :true
 end
