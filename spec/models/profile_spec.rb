@@ -7,7 +7,7 @@ RSpec.describe Profile, type: :model do
       before do
         @email = Faker::Internet.email
         @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
-        @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N16 0NM", profile: @charity.profile)
+        @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N22 6LN", profile: @charity.profile)
       end
 
       it "belongs to a user" do
@@ -16,7 +16,7 @@ RSpec.describe Profile, type: :model do
 
       it "has one address" do
         expect(Profile.first.address.street).to eq("Pelham Road")
-        expect(Profile.first.address.postcode).to eq("N16 0NM")
+        expect(Profile.first.address.postcode).to eq("N22 6LN")
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Profile, type: :model do
       before do
         @email_provider = Faker::Internet.email
         @provider = User.create!(organization_name: "Pret a manger", email: @email_provider, password: "password", type: "Provider")
-        @address_provider = Address.create!(door_number: "3", street: "Oxford Street", city: "London", country: "UK", postcode: "SW16 4RN", profile: @provider.profile)
+        @address_provider = Address.create!(door_number: "3", street: "Oxford Street", city: "London", country: "UK", postcode: "W1D 2EB", profile: @provider.profile)
       end
       it "belongs to a user" do
         expect(Profile.first.user.email).to eq(@email_provider)
@@ -32,9 +32,8 @@ RSpec.describe Profile, type: :model do
 
       it "has one address" do
         expect(Profile.first.address.street).to eq("Oxford Street")
-        expect(Profile.first.address.postcode).to eq("SW16 4RN")
+        expect(Profile.first.address.postcode).to eq("W1D 2EB")
       end
     end
-
   end
 end
