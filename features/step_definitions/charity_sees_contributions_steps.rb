@@ -55,18 +55,18 @@ Given(/^some contributions exist$/) do
   @address_3 = Address.create!(door_number: "127", street: "Ledbury Road", city: "London", country: "UK", postcode: "W11 2AQ", profile: @provider_3.profile)
 
 
-  Contribution.create!(collection_date: @date, collection_time: @time, user: @provider_1, products_attributes: [
+  @contribution_1 = Contribution.create!(collection_date: @date, collection_time: @time, user: @provider_1, products_attributes: [
     {quantity: 3, product_name: "Tuna cans", perishable: "0"},
     {quantity: 5, product_name: "Chicken sandwiches", perishable: "1"}
   ])
 
-  Contribution.create!(collection_date: @date,collection_time: @time, user: @provider_2, products_attributes: [
+  @contribution_2 = Contribution.create!(collection_date: @date,collection_time: @time, user: @provider_2, products_attributes: [
     {quantity: 3, product_name: "Tuna cans", perishable: "0"},
     {quantity: 5, product_name: "Fruit salads", perishable: "1"},
     {quantity: 5, product_name: "Chicken sandwiches", perishable: "1"}
   ])
 
-  Contribution.create!(collection_date: @date,collection_time: @time, user: @provider_3, products_attributes: [
+  @contribution_3 = Contribution.create!(collection_date: @date,collection_time: @time, user: @provider_3, products_attributes: [
     {quantity: 3, product_name: "Tuna cans", perishable: "0"},
     {quantity: 4, product_name: "Chicken sandwiches", perishable: "1"},
     {quantity: 5, product_name: "Bananas", perishable: "1"},
