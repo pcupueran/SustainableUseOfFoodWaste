@@ -6,6 +6,7 @@ gem 'pg'
 gem 'devise'
 gem 'haml-rails'
 gem 'geocoder'
+gem 'underscore-rails'
 
 
 group :development, :test do
