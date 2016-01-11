@@ -7,7 +7,14 @@ RSpec.describe Profile, type: :model do
       before do
         @email = Faker::Internet.email
         @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
-        @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N22 6LN", profile: @charity.profile)
+        address_params = {
+          door_number: "35",
+          street: "Pelham Road",
+          city: "London",
+          country: "UK",
+          postcode: "N22 6LN"
+        }
+        @charity.profile.address.update!(address_params)
       end
 
       it "belongs to a user" do
@@ -37,7 +44,14 @@ RSpec.describe Profile, type: :model do
         )
         @email_provider = Faker::Internet.email
         @provider = User.create!(organization_name: "Pret a manger", email: @email_provider, password: "password", type: "Provider")
-        @address_provider = Address.create!(door_number: "35", street: "Oxford Street", city: "London", country: "UK", postcode: "W1D 2DT", profile: @provider.profile)
+        address_params = {
+          door_number: "35",
+          street: "Oxford Street",
+          city: "London",
+          country: "UK",
+          postcode: "W1D 2DT"
+        }
+         @provider.profile.address.update!(address_params)
       end
       it "belongs to a user" do
         expect(Profile.first.user.email).to eq(@email_provider)

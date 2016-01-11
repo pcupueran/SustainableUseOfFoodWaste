@@ -14,7 +14,14 @@ Given(/^a profile for charity exists$/) do
   )
   @email = Faker::Internet.email
   @user = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
-  @address = Address.create!(door_number: "35", street: "Lansdowne Road", city: "London", country: "UK", postcode: "W11 2LQ", profile: @user.profile)
+  @address_params = {
+    door_number: "35",
+    street: "Lansdowne Road",
+    city: "London",
+    country: "UK",
+    postcode: "W11 2LQ"
+  }
+  @user.profile.address.update!(@address_params)
 end
 Given(/^a profile for provider exists$/) do
 
@@ -33,7 +40,14 @@ Given(/^a profile for provider exists$/) do
   )
   @email = Faker::Internet.email
   @user = User.create!(organization_name: "Preta a manger", email: @email, password: "password", type: "Provider")
-  @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N22 6LN", profile: @user.profile)
+  @address_params = {
+    door_number: "35",
+    street: "Pelham Road",
+    city: "London",
+    country: "UK",
+    postcode: "N22 6LN"
+  }
+  @user.profile.address.update!(@address_params)
 end
 
 Given(/^a user is in the editing profile page$/) do

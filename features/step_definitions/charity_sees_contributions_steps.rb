@@ -50,10 +50,33 @@ Given(/^some contributions exist$/) do
       }
     ]
   )
-  @address_1 = Address.create!(door_number: "35", street: "Oxford Street", city: "London", country: "UK", postcode: "W1D 2DT", profile: @provider_1.profile)
-  @address_2 = Address.create!(door_number: "114", street: "Campden Hill Road", city: "London", country: "UK", postcode: "W8 7AR", profile: @provider_2.profile)
-  @address_3 = Address.create!(door_number: "127", street: "Ledbury Road", city: "London", country: "UK", postcode: "W11 2AQ", profile: @provider_3.profile)
+  @address_1_params = {
+    door_number: "35",
+    street: "Oxford Street",
+    city: "London",
+    country: "UK",
+    postcode: "W1D 2DT"
+   }
 
+  @address_2_params = {
+    door_number: "114",
+    street: "Campden Hill Road",
+    city: "London",
+    country: "UK",
+    postcode: "W8 7AR"
+  }
+
+  @address_3_params = {
+    door_number: "127",
+    street: "Ledbury Road",
+    city: "London",
+    country: "UK",
+    postcode: "W11 2AQ"
+  }
+
+  @provider_1.profile.address.update!(@address_1_params)
+  @provider_2.profile.address.update!(@address_2_params)
+  @provider_3.profile.address.update!(@address_3_params)
 
   @contribution_1 = Contribution.create!(collection_date: @date, collection_time: @time, user: @provider_1, products_attributes: [
     {quantity: 3, product_name: "Tuna cans", perishable: "0"},

@@ -5,7 +5,13 @@ RSpec.describe Address, type: :model do
     before do
       @email = Faker::Internet.email
       @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
-      @address = Address.create!(door_number: "35", street: "Pelham Road", city: "London", country: "UK", postcode: "N22 6LN", profile: @charity.profile)
+      @address_params = {
+        door_number: "35",
+        street: "Pelham Road",
+        city: "London", country: "UK",
+        postcode: "N22 6LN"
+      }
+      @charity.profile.address.update!(@address_params)
     end
 
     it "belongs to a profile" do
@@ -28,20 +34,20 @@ RSpec.describe Address, type: :model do
       )
 
       it "builds a string for geocoding" do
-        expect(@address.geocode_string).to eq('35 Pelham Road, N22 6LN, London, UK')
+        expect(@charity.profile.address.geocode_string).to eq('35 Pelham Road, N22 6LN, London, UK')
       end
 
       it "geocodes an geocode_string" do
-        @address.geocode
+        @charity.profile.address.geocode
 
-        expect(@address.latitude).to eq(51.5951093)
-        expect(@address.longitude).to eq(-0.1067676)
+        expect(@charity.profile.address.latitude).to eq(51.5951093)
+        expect(@charity.profile.address.longitude).to eq(-0.1067676)
       end
 
-      it "geocodes on save" do
-        @address.save!
-        expect(@address.latitude).to eq(51.5951093)
-        expect(@address.longitude).to eq(-0.1067676)
+      it "geocodes on update" do
+        @charity.profile.address.update!(@address_params)
+        expect(@charity.profile.address.latitude).to eq(51.5951093)
+        expect(@charity.profile.address.longitude).to eq(-0.1067676)
       end
     end
   end
