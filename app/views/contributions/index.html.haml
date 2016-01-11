@@ -9,6 +9,7 @@
 #results
   %h1 List of contributions available
   %ul
-  - @contributions.each do |contribution|
-    = render contribution
+  - unless @contributions.nil?
+    - @contributions.each do |contribution|
+      = render contribution
 
