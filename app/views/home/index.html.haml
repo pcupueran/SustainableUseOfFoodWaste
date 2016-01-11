@@ -3,9 +3,4 @@
   = link_to "Add contribution", new_user_contribution_path(:user_id => current_user.id)
 - elsif current_user.type == "Charity"
   = link_to "Contributions available", contributions_path
-  %p Search for contributions
-  = form_tag search_contributions_path, method: "GET", remote: :true do
-    %fieldset#search
-      = label_tag :distance, "Within distance in Km"
-      = select_tag :distance, options_for_select(['5', '10', '15', '20', '25'])
-    = submit_tag :search
+
