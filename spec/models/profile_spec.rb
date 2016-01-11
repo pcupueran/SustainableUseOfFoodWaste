@@ -22,9 +22,22 @@ RSpec.describe Profile, type: :model do
 
     describe "Provider" do
       before do
+        Geocoder::Lookup::Test.add_stub(
+          "35 Oxford Street, W1D 2DT, London, UK", [
+            {
+              'latitude'     => 51.51620759999999,
+              'longitude'    => -0.1317682,
+              'address'      => '35 Oxford St, Soho, London W1D 2DT, UK',
+              'city'         => 'London',
+              'postal_code'  => 'W1D 2DT',
+              'country'      => 'United Kingdom',
+              'country_code' => 'UK'
+            }
+          ]
+        )
         @email_provider = Faker::Internet.email
         @provider = User.create!(organization_name: "Pret a manger", email: @email_provider, password: "password", type: "Provider")
-        @address_provider = Address.create!(door_number: "3", street: "Oxford Street", city: "London", country: "UK", postcode: "W1D 2EB", profile: @provider.profile)
+        @address_provider = Address.create!(door_number: "35", street: "Oxford Street", city: "London", country: "UK", postcode: "W1D 2DT", profile: @provider.profile)
       end
       it "belongs to a user" do
         expect(Profile.first.user.email).to eq(@email_provider)
@@ -32,7 +45,7 @@ RSpec.describe Profile, type: :model do
 
       it "has one address" do
         expect(Profile.first.address.street).to eq("Oxford Street")
-        expect(Profile.first.address.postcode).to eq("W1D 2EB")
+        expect(Profile.first.address.postcode).to eq("W1D 2DT")
       end
     end
   end

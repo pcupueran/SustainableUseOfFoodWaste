@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:profile).permit(:user_attributes => [:id, :organization_name, :email],:address_attributes => [:id, :door_number, :street, :city, :country, :postcode])
+    params.require(:profile).permit(:user_attributes => [:id, :organization_name, :email], :address_attributes => [:id, :door_number, :street, :city, :country, :postcode])
   end
 
   def load_profile
