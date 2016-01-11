@@ -35,6 +35,7 @@ class ContributionsController < ApplicationController
     unless params[:distance].nil?
       @addresses = @addresses.near([current_user.profile.address.latitude, current_user.profile.address.longitude], params[:distance], :units => :km)
     end
+
     @addresses.each do |address|
       @contr = Contribution.joins(:user).where("users.id = ?", address.profile.user_id)
       @contributions << @contr[0]
