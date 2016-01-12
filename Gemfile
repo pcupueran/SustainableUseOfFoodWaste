@@ -12,6 +12,7 @@ gem 'underscore-rails'
 group :development, :test do
   gem 'pry-byebug'
   gem 'poltergeist'
+  gem 'jasmine-rails'
 end
 
 group :test do
