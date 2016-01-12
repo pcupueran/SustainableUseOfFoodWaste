@@ -7,8 +7,22 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   after_create :create_profile
 
+
+  def as_json
+    address = self.profile.address
+    user_as_json = {
+      "organizationName" => self.organization_name,
+      "email" => self.email,
+      "address" => address.geocode_string,
+      "latitude" => address.latitude,
+      "longitude" => address.longitude
+    }
+    user_as_json
+  end
+
   private
   def create_profile
     Profile.create!(user: self)
   end
+
 end
