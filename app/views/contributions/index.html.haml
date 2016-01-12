@@ -12,4 +12,8 @@
   - unless @contributions.nil?
     - @contributions.each do |contribution|
       = render contribution
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAHUYHURP4c_vUvTGCT-AkrFNlu-KdUBvg&callback=initMap", :async => true, :defer => true
+#map-canvas{ data: { charity: @charity_as_json.to_json, providers: @providers_as_json.to_json } }
+
+
 
