@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
 
   after_create :create_address
 
+  mount_uploader :avatar, AvatarUploader
+
   private
   def create_address
     Address.create!(profile: self)
