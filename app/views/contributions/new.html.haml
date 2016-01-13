@@ -1,9 +1,9 @@
 %h1 Your contribution helps
 %h2 Products
 
-%p Contribution cannot be created because the following fields are required
 
 - unless @contribution.errors.messages.length == 0
+  %p Contribution cannot be created because the following fields are required
   - @contribution.errors.messages.each do |key, value|
     %ul#errors
       %li.field-required
@@ -23,7 +23,7 @@
           = p.label :perishable
           = p.check_box :perishable
     = f.label :collection_date
-    = f.date_select(:collection_date, order: [:day, :month, :year], prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, start_year: Time.now.year)
+    = f.date_select(:collection_date, order: [:day, :month, :year], prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, start_year: Date.today.year, end_year: Date.today.year + 1)
 
     = f.label :collection_time
     = f.time_select(:collection_time, {prompt: {hour: 'Choose hour', minute: 'Choose minute'}, minute_step: 15, ignore_date: true})
