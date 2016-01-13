@@ -33,7 +33,6 @@ class ContributionsController < ApplicationController
   end
 
   def search
-
     @charity_address = current_user.profile.address
 
     @addresses = Address.joins(:profile => :user).where("users.type = ?", "Provider")

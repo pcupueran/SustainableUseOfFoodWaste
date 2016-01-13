@@ -2,7 +2,8 @@
   %fieldset
     %h2
       = "Contribution donated by #{contribution.user.organization_name}"
-
+    %span
+      = "Distance: #{contribution.user.profile.address.distance_from([current_user.profile.address.latitude, current_user.profile.address.longitude]) miles}"
     - contribution.products.each do |p|
       %ul#products-list
         %li.product
