@@ -1,5 +1,5 @@
 $("#results").html("<% @contributions.each do |contribution| %><%= j render contribution %><% end %>");
-var providers = ("<%= @providers.to_json %>").replace(/&quot;/g,'"');
+var providers = ("<%= @providers_as_json.to_json %>").replace(/&quot;/g,'"');
 
 $("#map-canvas").data("providers",JSON.parse(providers));
 initMap();
