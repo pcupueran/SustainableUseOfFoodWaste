@@ -26,4 +26,11 @@ class Contribution < ActiveRecord::Base
     errors.add(:collection_date, "cannot be in the past") if collection_date < Date.today
   end
 
+  def self.list_contributions(providers)
+    contributions = []
+    providers.each do |provider|
+      contributions << provider.contributions[0]
+    end
+    contributions
+  end
 end
