@@ -7,6 +7,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'geocoder'
 gem 'underscore-rails'
+gem 'mini_magick'
 gem 'carrierwave'
 
 group :development, :test do
