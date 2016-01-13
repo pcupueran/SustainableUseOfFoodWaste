@@ -35,7 +35,8 @@ class ContributionsController < ApplicationController
   def search
     @charity_address = current_user.profile.address
 
-    @addresses = Address.find_addresses_by_distance(@charity_address, params[:distance])
+    @addresses = Address.joins(:profile => :user).where("users.type = ?", "Provider")
+    @addresses = Address.find_addresses_by_distance(@addresses, @charity_address, params[:distance])
     @eager_load_addresses = @addresses.joins(:profile => :user)
 
     @providers_with_contributions = Provider.joins(:contributions)
