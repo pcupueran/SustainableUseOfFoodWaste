@@ -3,13 +3,13 @@
   = form_tag search_contributions_path, method: "GET", remote: :true do
     %fieldset#distance
       = label_tag :distance, "Within distance in Km"
-      = select_tag :distance, options_for_select(['5', '10', '15', '20', '25'])
+      = select_tag :distance, options_for_select(['5', '10', '15'])
     %fieldset
       = submit_tag :search
 #results
   %h1 List of contributions available
   %ul
-  - unless @contributions.nil?
+  - unless @contributions.empty?
     - @contributions.each do |contribution|
       = render contribution
 = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAHUYHURP4c_vUvTGCT-AkrFNlu-KdUBvg&callback=initMap", :async => true, :defer => true
