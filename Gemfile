@@ -7,7 +7,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'geocoder'
 gem 'underscore-rails'
-
+gem 'carrierwave'
 
 group :development, :test do
   gem 'pry-byebug'
