@@ -3,6 +3,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :user
   has_many :products, inverse_of: :contribution
   accepts_nested_attributes_for :products, allow_destroy: :true, reject_if: proc { |attributes| attributes[:product_name].blank? }
+
   validates :collection_date, :collection_time, presence: :true
   validate :must_have_one_product, :collection_date_validity
 

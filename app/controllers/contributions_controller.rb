@@ -1,4 +1,8 @@
 class ContributionsController < ApplicationController
+  before_action :load_contribution, :only => [:show]
+  before_action :authenticate_user!
+  append_before_action :restrict_access, :only => [:new]
+
   def new
     @contribution = Contribution.new
     @contribution.products << Product.new
@@ -16,12 +20,8 @@ class ContributionsController < ApplicationController
     end
   end
 
-
-  def show
-    @contribution = Contribution.find(params[:id])
-  end
-
   def index
+    render :status => 403, :text => "Forbidden User Access Please sign in as a Charity" unless current_user.type == "Charity"
     @contributions = Contribution.includes(:products)
     @charity_as_json = current_user.as_json
     @providers_as_json = Contribution.providers_as_json(Provider.joins(:contributions).limit(10))
@@ -51,5 +51,13 @@ class ContributionsController < ApplicationController
   private
   def contribution_params
     params.require(:contribution).permit(:collection_date, :collection_time, :products_attributes => [:quantity, :product_name, :perishable])
+  end
+
+  def load_contribution
+    @contribution = Contribution.find(params[:id])
+  end
+
+  def restrict_access
+    render :status => 403, :text => "Forbidden User Access" unless current_user.id == params[:user_id].to_i && current_user.type == "Provider"
   end
 end

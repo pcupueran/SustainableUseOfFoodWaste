@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_filter :load_profile
+  append_before_action :authenticate_user!
+  append_before_action :restrict_access, :only => [:edit]
 
   def update
     @profile.update!(profile_params)
@@ -13,5 +15,9 @@ class ProfilesController < ApplicationController
 
   def load_profile
     @profile = Profile.find(params[:id])
+  end
+
+  def restrict_access
+    render :status => 403, :text => "Forbidden profile" unless current_user == @profile.user
   end
 end
