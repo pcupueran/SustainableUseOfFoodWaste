@@ -8,6 +8,6 @@ class Address < ActiveRecord::Base
   end
 
   def self.find_addresses_by_distance(addresses, referenced_address, distance)
-    addresses = addresses.near([referenced_address.latitude, referenced_address.longitude], distance, :units => :km)
+    addresses = addresses.near([referenced_address.latitude, referenced_address.longitude], distance)
   end
 end

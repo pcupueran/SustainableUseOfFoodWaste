@@ -7,7 +7,7 @@
   - @contribution.errors.messages.each do |key, value|
     %ul#errors
       %li.field-required
-        = "#{key.to_s.capitalize!.gsub('_', " ")} " << value[0]
+        = "#{key.to_s.capitalize!.gsub('_', " ")}: #{value[0]} "
 
 = form_for ([:user, @contribution]) do |f|
   %fieldset
@@ -22,6 +22,7 @@
 
           = p.label :perishable
           = p.check_box :perishable
+
     = f.label :collection_date
     = f.date_select(:collection_date, order: [:day, :month, :year], prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, start_year: Date.today.year, end_year: Date.today.year + 1)
 

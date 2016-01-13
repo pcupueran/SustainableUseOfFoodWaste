@@ -1,6 +1,7 @@
 class Contribution < ActiveRecord::Base
   has_one :booking
   belongs_to :user
+
   has_many :products, inverse_of: :contribution
   accepts_nested_attributes_for :products, allow_destroy: :true, reject_if: proc { |attributes| attributes[:product_name].blank? }
 
