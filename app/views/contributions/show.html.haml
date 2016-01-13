@@ -1,9 +1,19 @@
-%h1 Details of your contribution
-- @contribution.products.each do |p|
-  %fieldset
-    %span
-      = "Quantity #{p.quantity}"
-    %span
-      = "Product Name: #{p.product_name}"
-    %span
-      = "perishable #{p.perishable}"
+%h1
+  Details of your contribution
+%fieldset
+  %table
+    %tbody
+      %tr
+        %td Quantity
+        %td Product Name
+        %td Perishable
+
+      - @contribution.products.each do |p|
+        %tr
+          %td
+            = "#{p.quantity}"
+          %td
+            = "#{p.product_name}"
+          %td
+            = "#{p.perishable}"
+= link_to "Back to profile", profile_path(@contribution.user.profile)
