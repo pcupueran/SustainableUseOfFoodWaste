@@ -1,5 +1,0 @@
-$("#results").html("<h1> List of all contributions within <%= @distance %> miles distance</h1><span><a href='<% contributions_path %>'> See all contributions</a></span><% @contributions.each do |contribution| %><%= j render contribution %><% end %>");
-var providers = ("<%= @providers_as_json.to_json %>").replace(/&quot;/g,'"');
-
-$("#map-canvas").data("providers",JSON.parse(providers));
-initMap();
