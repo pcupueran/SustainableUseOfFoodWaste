@@ -1,20 +1,9 @@
-#left-container
-  #results
-    %h1 List of all contributions available
-    %ul
-    - unless @contributions.empty?
-      - @contributions.each do |contribution|
-        = render contribution
-#right-container
-  #search
-    %p Search for contributions
-    = form_tag search_contributions_path, method: "GET", remote: :true do
-      %fieldset#distance
-        = label_tag :distance, "Within distance in miles"
-        = select_tag :distance, options_for_select(['3', '5', '10'])
-        = submit_tag :search
-  #map-canvas{ data: { charity: @charity_as_json.to_json, providers: @providers_as_json.to_json } }
-= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAHUYHURP4c_vUvTGCT-AkrFNlu-KdUBvg&callback=initMap", :async => true, :defer => true
+#results
+  %h1 List of all contributions available
+  %ul
+    - @contributions.each do |contribution|
+      = render contribution
+
 
 
 
