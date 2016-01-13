@@ -1,4 +1,4 @@
 class Product < ActiveRecord::Base
-  has_many :contribution_products
-  has_many :contributions, :through => :contributions_products
+  belongs_to :contribution, inverse_of: :products
+  validates_presence_of :contribution
 end
