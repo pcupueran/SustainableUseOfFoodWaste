@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for :users
-  resources :providers, :as => "users", :only => [:show] do
-    resources :contributions, :only => [:new, :create, :show] do
+  resources :providers, :as => "users", :only => [:show, :index] do
+    collection do
+      get :search
+    end
+    resources :contributions, :only => [:new, :create, :show, :index] do
       collection do
         get :add_product
       end
-    end
-  end
-
-  resources :contributions, :only => [:index] do
-    collection do
-      get :search
     end
   end
 
