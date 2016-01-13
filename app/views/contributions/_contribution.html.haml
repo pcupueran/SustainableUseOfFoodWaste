@@ -4,8 +4,11 @@
       = "Contribution donated by #{contribution.user.organization_name}"
       = link_to "Show provider's profile", profile_path(contribution.user)
     %span
-      = "Distance: #{ contribution.user.profile.address.distance_from([current_user.profile.address.latitude, current_user.profile.address.longitude]) } miles"
-
+      = "Distance: #{ contribution.user.profile.address.distance_from([current_user.profile.address.latitude, current_user.profile.address.longitude]).round(2) } miles"
+    .collection-date
+      = "#{ contribution.collection_date }"
+    .collection-time
+      = "#{ contribution.collection_time.to_s(:time)}"
     - contribution.products.each do |p|
       %ul#products-list
         %li.product
@@ -14,4 +17,4 @@
           %span
             = "Product Name: #{p.product_name}"
           %span
-            = "perishable #{p.perishable}"
+            = "Perishable: #{p.perishable}"
