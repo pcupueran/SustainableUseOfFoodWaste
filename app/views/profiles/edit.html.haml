@@ -1,4 +1,12 @@
 %h1 Edit profile
+- unless @profile.errors.messages.empty?
+  %p
+    Profile cannot be created because of the following reasons
+    %ul#errors
+      - @profile.errors.messages.each do |key, value|
+        %li.field-required
+          = "#{key}: #{value[0]}"
+
 = form_for @profile do |f|
   %fieldset
     = f.fields_for :user do |u|
@@ -19,4 +27,10 @@
       = a.text_field :country, value: @profile.address.country
       = a.label :postcode
       = a.text_field :postcode, value: @profile.address.postcode
+
+  %fieldset
+    = image_tag(@profile.avatar.url) if @profile.avatar?
+    = f.label :avatar
+    = f.file_field :avatar
+
   = f.submit "Update profile"

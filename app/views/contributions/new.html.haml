@@ -2,7 +2,7 @@
 %h2 Products
 
 
-- unless @contribution.errors.messages.length == 0
+- unless @contribution.errors.messages.empty?
   %p Contribution cannot be created because the following fields are required
   - @contribution.errors.messages.each do |key, value|
     %ul#errors
