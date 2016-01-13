@@ -32,5 +32,10 @@
     %span
       = "Postcode: #{ @profile.address.postcode}"
 
-- if !current_user.nil? && current_user == @profile.user
+  %dt
+    Avatar
+  %dd
+    = image_tag(@profile.avatar.url) if @profile.avatar?
+
+- if current_user == @profile.user
   = link_to "Edit profile", edit_profile_path(@profile)
