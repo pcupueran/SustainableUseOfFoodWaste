@@ -22,10 +22,9 @@ class ContributionsController < ApplicationController
   end
 
   def index
-    @contributions = Contribution.all
-
+    @contributions = Contribution.includes(:products)
     @charity_as_json = current_user.as_json
-    @providers_as_json = Contribution.providers_as_json(Provider.joins(:contributions).limit(5))
+    @providers_as_json = Contribution.providers_as_json(Provider.joins(:contributions).limit(10))
 
   end
 
@@ -34,21 +33,18 @@ class ContributionsController < ApplicationController
   end
 
   def search
-    @addresses =Address.joins(:profile => :user).where("users.type = ?", "Provider")
-    unless params[:distance].nil?
-      @addresses = @addresses.near([current_user.profile.address.latitude, current_user.profile.address.longitude], params[:distance], :units => :km)
-    end
+    @charity_address = current_user.profile.address
 
-    @contributions = []
-    @providers = []
-    @addresses.each do |address|
-      @contribution = Contribution.joins(:user).where("users.id = ?", address.profile.user_id)
-      @contributions << @contribution[0]
-      @providers << Provider.find(address.profile.user_id)
-    end
+    @addresses = Address.find_addresses_by_distance(@charity_address, params[:distance])
+    @eager_load_addresses = @addresses.joins(:profile => :user)
 
-    @coordinates_json = current_user.profile.address.to_json(:except => %i(id created_at updated_at))
-    @providers = Contribution.providers_as_json(@providers)
+    @providers_with_contributions = Provider.joins(:contributions)
+
+    @providers = Provider.find_providers(@providers_with_contributions, @eager_load_addresses)
+
+    @contributions = Contribution.list_contributions(@providers)
+
+    @providers_as_json = Contribution.providers_as_json(@providers)
   end
 
   private
