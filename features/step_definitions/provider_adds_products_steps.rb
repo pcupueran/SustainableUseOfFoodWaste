@@ -68,9 +68,9 @@ Then(/^the error message "(.*?)" is shown$/) do |error_message|
 end
 
 When(/^a provider adds collection date$/) do
-  select('10', :from => "contribution[collection_date(3i)]")
-  select('January', :from => "contribution[collection_date(2i)]")
-  select('2016', :from => "contribution[collection_date(1i)]")
+  select(Date.today.day, :from => "contribution[collection_date(3i)]")
+  select(Date.today.strftime("%B"), :from => "contribution[collection_date(2i)]")
+  select(Date.today.year, :from => "contribution[collection_date(1i)]")
 end
 
 When(/^a provider does not add collection time$/) do

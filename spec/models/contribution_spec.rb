@@ -46,7 +46,7 @@ RSpec.describe Contribution, type: :model do
 
     it "belongs to a provider" do
       expect(Contribution.first.user.type).to eq("Provider")
-      expect(Contribution.first.user.organization_name).to eq("Pret a manger")
+      expect(Contribution.first.user.organization_name).to eq("Waitrose")
     end
 
     it "gives providers information as json" do

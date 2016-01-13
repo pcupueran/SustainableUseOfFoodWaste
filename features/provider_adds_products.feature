@@ -7,7 +7,6 @@ Background:
   Then the page to add a contribution is shown
   When a provider fills the valid data
 
-
 Scenario: Provider creates a contribution with one product
   When a provider adds collection date
     And a provider adds collection time

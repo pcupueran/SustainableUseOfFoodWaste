@@ -4,7 +4,7 @@ class Contribution < ActiveRecord::Base
   has_many :products, inverse_of: :contribution
   accepts_nested_attributes_for :products, allow_destroy: :true, reject_if: proc { |attributes| attributes[:product_name].blank? }
   validates :collection_date, :collection_time, presence: :true
-  validate :must_have_one_product, :collection_date_validity, :collection_time_validity
+  validate :must_have_one_product, :collection_date_validity
 
   def self.providers_as_json(providers)
     providers_json = []
