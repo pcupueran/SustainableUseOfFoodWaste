@@ -6,4 +6,8 @@ class Address < ActiveRecord::Base
   def geocode_string
     "#{door_number} #{street}, #{postcode}, #{city}, #{country}"
   end
+
+  def self.find_addresses_by_distance(addresses, referenced_address, distance)
+    addresses = addresses.near([referenced_address.latitude, referenced_address.longitude], distance, :units => :km)
+  end
 end
