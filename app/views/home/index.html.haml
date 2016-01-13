@@ -1,6 +1,6 @@
-%h1 Homepage Using Food Waste
-- if current_user.type == "Provider"
-  = link_to "Add contribution", new_user_contribution_path(:user_id => current_user.id)
-- elsif current_user.type == "Charity"
-  = link_to "Contributions available", contributions_path
+%h1
+  Welcome to Sustainable use of food waste
+
+= link_to "Sign up now!", new_user_registration_path
+= link_to "Log in", new_user_session_path
 

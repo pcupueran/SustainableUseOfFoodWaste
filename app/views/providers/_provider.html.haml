@@ -1,0 +1,7 @@
+%li
+  = "#{provider.organization_name}"
+  %span
+    = "Distance: #{ provider.profile.address.distance_from([current_user.profile.address.latitude, current_user.profile.address.longitude]).round(2) } miles"
+  %nav
+    = link_to "Contributions", user_contributions_path(provider)
+    = link_to "Show profile", profile_path(provider)

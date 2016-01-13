@@ -1,0 +1,7 @@
+$("h1#providers").text("List of providers within <%= @distance %> miles distance")
+$("#results").html("<span><a href='<% users_path %>'> See all providers</a></span><% @providers.each do |provider| %><%= j render provider %><% end %>");
+var providers = ("<%= @providers_as_json.to_json %>").replace(/&quot;/g,'"');
+
+$("#map-canvas").data("providers",JSON.parse(providers));
+initMap();
+
