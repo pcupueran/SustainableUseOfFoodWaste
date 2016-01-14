@@ -1,36 +1,37 @@
-%h1 Edit profile
-- unless @profile.errors.messages.empty?
-  %p
-    Profile cannot be created because of the following reasons
-    %ul#errors
-      - @profile.errors.messages.each do |key, value|
-        %li.field-required
-          = "#{key}: #{value[0]}"
+.col-2-3.push-col-1-8
+  %h1 Edit profile
+  - unless @profile.errors.messages.empty?
+    %p
+      Profile cannot be created because of the following reasons
+      %ul#errors
+        - @profile.errors.messages.each do |key, value|
+          %li.field-required
+            = "#{key}: #{value[0]}"
 
-= form_for @profile do |f|
-  %fieldset
-    = f.fields_for :user do |u|
-      = u.label :organization_name
-      = u.text_field :organization_name, value: @profile.user.organization_name
-      = u.label :email
-      = u.text_field :email, value: @profile.user.email
-  %fieldset
-    = f.label :address
-    = f.fields_for :address do |a|
-      = a.label :door_number
-      = a.text_field :door_number, value: @profile.address.door_number
-      = a.label :street
-      = a.text_field :street, value: @profile.address.street
-      = a.label :city
-      = a.text_field :city, value: @profile.address.city
-      = a.label :country
-      = a.text_field :country, value: @profile.address.country
-      = a.label :postcode
-      = a.text_field :postcode, value: @profile.address.postcode
+  = form_for @profile do |f|
+    %fieldset
+      = f.fields_for :user do |u|
+        = u.label :organization_name
+        = u.text_field :organization_name, value: @profile.user.organization_name
+        = u.label :email
+        = u.text_field :email, value: @profile.user.email
+    %fieldset
+      = f.label :address
+      = f.fields_for :address do |a|
+        = a.label :door_number
+        = a.text_field :door_number, value: @profile.address.door_number
+        = a.label :street
+        = a.text_field :street, value: @profile.address.street
+        = a.label :city
+        = a.text_field :city, value: @profile.address.city
+        = a.label :country
+        = a.text_field :country, value: @profile.address.country
+        = a.label :postcode
+        = a.text_field :postcode, value: @profile.address.postcode
 
-  %fieldset
-    = image_tag(@profile.avatar.url) if @profile.avatar?
-    = f.label :avatar
-    = f.file_field :avatar
+    %fieldset
+      = image_tag(@profile.avatar.url) if @profile.avatar?
+      = f.label :avatar
+      = f.file_field :avatar
 
-  = f.submit "Update profile"
+    = f.submit "Update"

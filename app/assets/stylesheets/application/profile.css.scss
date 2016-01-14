@@ -1,0 +1,35 @@
+
+a.edit {
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 15px;
+  background-color: $background-color;
+  font-size: 1em;
+  color: $color;
+  display: block;
+  width: 12.5%;
+  text-align: center;
+}
+span {
+  display: block;
+  margin-bottom: 20px;
+}
+dt {
+  padding: 10px 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+div#address {
+  margin-left: 40px;
+}
+
+img {
+  border-radius: 5px;
+  /* width: auto; */
+}
+@media (max-width: 700px) {
+  a.edit {
+    width: 25%
+  }
+}

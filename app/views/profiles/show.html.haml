@@ -1,48 +1,43 @@
-%h1 Profile information
-%dl
-  %dt
-    User type
-  %dd
-    = @profile.user.type
+.col-1-2.push-col-1-8
+  %h1 Profile information
+  %dl
+    %dt
+      User type
+    %dd
+      = @profile.user.type
 
-  %dt
-    Organization name
-  %dd
-    = @profile.user.organization_name
+    %dt
+      Organization name
+    %dd
+      = @profile.user.organization_name
 
-  %dt
-    Email
-  %dd
-    = @profile.user.email
+    %dt
+      Email
+    %dd
+      = @profile.user.email
 
-  %dt
-    Address
-  %dd
-  - if @profile.address.nil?
-    = link_to "Add address", edit_profile_path(@profile)
-  - else
-    %span
-      = "Door number: #{ @profile.address.door_number}"
-    %span
-      = "Street: #{ @profile.address.street}"
-    %span
-      = "City: #{ @profile.address.city}"
-    %span
-      = "Country: #{ @profile.address.country}"
-    %span
-      = "Postcode: #{ @profile.address.postcode}"
+    %dt
+      Address
+    %dd
+    - if @profile.address.nil?
+      = link_to "Add address", edit_profile_path(@profile)
+    - else
+      #address
+        %span
+          = "Door number: #{ @profile.address.door_number}"
+        %span
+          = "Street: #{ @profile.address.street}"
+        %span
+          = "City: #{ @profile.address.city}"
+        %span
+          = "Country: #{ @profile.address.country}"
+        %span
+          = "Postcode: #{ @profile.address.postcode}"
 
-  %dt
-    Avatar
-  %dd
-    = image_tag(@profile.avatar.url) if @profile.avatar?
+.avatar.col-1-2
+  %span Avatar
+  = image_tag(@profile.avatar.url) if @profile.avatar?
+  .nav
+  - if current_user == @profile.user
+    = link_to "Edit", edit_profile_path(@profile), class: "edit"
 
-- if current_user == @profile.user
-  = link_to "Edit profile", edit_profile_path(@profile)
-
-- if current_user.type == "Provider"
-  = link_to "Add contribution", new_user_contribution_path(:user_id => current_user.id)
-  = link_to "Your contributions", user_contributions_path(:user_id => current_user.id)
-
-- elsif current_user.type == "Charity"
-  = link_to "Providers available", users_path

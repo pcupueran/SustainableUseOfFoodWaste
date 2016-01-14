@@ -1,15 +1,17 @@
-%main
-  %h1#providers List of providers that have donated contributions
+#search.col-1-2
+  %h1 Search for providers
+  = form_tag search_users_path, method: "GET", remote: :true do
+    %fieldset#distance
+      = label_tag :distance, "by distance in miles"
+      = select_tag :distance, options_for_select(['3', '5', '10'])
+      = submit_tag :search
+
+  #map-canvas{ data: { charity: @charity_as_json.to_json, providers: @providers_as_json.to_json } }
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAHUYHURP4c_vUvTGCT-AkrFNlu-KdUBvg&callback=initMap", :async => true, :defer => true
+
+#providers.col-1-2
+  %h2 List of providers that have donated contributions
   %ul#results
     %h2 Organization Name
     - @providers.each do |provider|
       = render provider
-  #search
-    %p Search for providers
-    = form_tag search_users_path, method: "GET", remote: :true do
-      %fieldset#distance
-        = label_tag :distance, "by distance in miles"
-        = select_tag :distance, options_for_select(['3', '5', '10'])
-        = submit_tag :search
-  #map-canvas{ data: { charity: @charity_as_json.to_json, providers: @providers_as_json.to_json } }
-  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAHUYHURP4c_vUvTGCT-AkrFNlu-KdUBvg&callback=initMap", :async => true, :defer => true
