@@ -20,17 +20,18 @@ header {
 
 }
 
-img#hamburger {
+#hamburger {
     display: none;
   }
 
 
 #mobile-navigation{
-  height: 200px;
-  width: 150px;
+  display: none;
+  width: 30%;
+  height: auto;
   position: absolute;
   top: 90px;
-  right: 0;
+  right: 8px;
   background-color: #333333;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -68,7 +69,7 @@ img#hamburger {
     #logo #site-title {
       display: none;
     }
-    img#hamburger {
+    #hamburger {
       height: 70px;
       display: inline-block;
       position: absolute;
@@ -82,8 +83,3 @@ img#hamburger {
   }
 }
 
-div#mobile-navigation {
-  width: 30%;
-  height: auto;
-  right: 8px;
-}
