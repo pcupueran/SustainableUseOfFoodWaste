@@ -1,4 +1,5 @@
 class ProvidersController < ApplicationController
+  before_filter :authenticate_user!
   def index
     @providers = Provider.joins(:contributions).uniq
     @charity_as_json = current_user.as_json
