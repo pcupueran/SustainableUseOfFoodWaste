@@ -32,7 +32,7 @@ header {
   position: absolute;
   top: 90px;
   right: 8px;
-  background-color: #333333;
+  background-color: $background-color;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   ul {
@@ -44,7 +44,7 @@ header {
     }
     a {
       text-decoration: none;
-      color: #DFB2B2;
+      color: $color;
     }
   }
 }
