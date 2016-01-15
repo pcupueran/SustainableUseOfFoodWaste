@@ -25,5 +25,6 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'email_spec'
+  gem 'simplecov', :require => false
 end
 
