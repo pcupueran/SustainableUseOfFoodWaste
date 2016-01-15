@@ -5,6 +5,7 @@ RSpec.describe ProfilesController, type: :controller do
     before do
       @email = Faker::Internet.email
       @charity = User.create!(organization_name: "Food for everyone", email: @email, password: "password", type: "Charity")
+      sign_in @charity
     end
     describe "Show profile" do
       before do

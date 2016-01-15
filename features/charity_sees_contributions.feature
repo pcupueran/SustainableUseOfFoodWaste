@@ -1,10 +1,10 @@
 Feature: Charity sees contributions
-
-Scenario: A charity sees list of contributions
+@wip @javascript
+Scenario: A charity sees list of providers
 Given the charity is already registered
   And a user is signed in
   And some contributions exist
   And the charity is in the homepage
-When the charity sees contributions
+When the charity sees providers
 Then the charity is taken to the contribution index page
-  And a list of contributions is shown
+  And a list of providers is shown

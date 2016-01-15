@@ -98,18 +98,18 @@ Given(/^some contributions exist$/) do
 end
 
 Given(/^the charity is in the homepage$/) do
-  visit root_path
+  visit profile_path(@user)
 end
 
-When(/^the charity sees contributions$/) do
-  click_on "Contributions available"
+When(/^the charity sees providers$/) do
+  click_on "Providers available"
 end
 
 Then(/^the charity is taken to the contribution index page$/) do
-  expect(current_path).to eq(contributions_path)
+  expect(current_path).to eq(users_path)
 end
 
-Then(/^a list of contributions is shown$/) do
+Then(/^a list of providers is shown$/) do
   expect(page).to have_content("Contribution donated by #{@provider_1.organization_name}")
   expect(page).to have_content("Contribution donated by #{@provider_2.organization_name}")
   expect(page).to have_content("Contribution donated by #{@provider_3.organization_name}")

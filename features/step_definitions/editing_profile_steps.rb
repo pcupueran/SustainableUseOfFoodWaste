@@ -73,7 +73,7 @@ When(/^a user updates his\/her profile$/) do
       }
     ]
   )
-  click_button "Update profile"
+  click_button "Update"
 end
 
 Then(/^the profile's address is updated$/) do
@@ -86,12 +86,12 @@ Given(/^provider is in the show profile page$/) do
 end
 
 Given(/^provider edits its profile$/) do
-  click_on "Edit profile"
+  click_on "Edit"
 end
 
 Then(/^the edit profile page is shown$/) do
   expect(current_path).to eq(edit_profile_path(@user.profile))
-  expect(page).to have_content("Edit profile")
+  expect(page).to have_content("Edit")
 end
 
 Given(/^charity is in the show profile page$/) do
@@ -99,7 +99,7 @@ Given(/^charity is in the show profile page$/) do
 end
 
 Given(/^charity edits its profile$/) do
-  click_on "Edit profile"
+  click_on "Edit"
 end
 
 Given(/^a user is signed in$/) do

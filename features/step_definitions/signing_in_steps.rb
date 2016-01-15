@@ -17,7 +17,7 @@ When(/^the charity signs in$/) do
 end
 
 Then(/^the charity is taken to the homepage$/) do
-  expect(current_path).to eq(root_path)
+  expect(current_path).to eq(profile_path(@user))
 end
 
 Then(/^the flash message "(.*?)" is shown$/) do |message|
