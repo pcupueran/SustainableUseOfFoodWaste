@@ -15,13 +15,6 @@ When(/^a provider fills the valid data$/) do
 end
 
 When(/^a provider creates contribution$/) do
-  # AvatarUploader.enable_processing = true
-  # @uploader = AvatarUploader.new(@user, :avatar)
-
-  File.open("/uploads/profile/avatar/1") do |f|
-    @uploader.store!(f)
-  end
-
   click_button "Add contribution"
 end
 

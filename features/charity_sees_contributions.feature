@@ -1,5 +1,5 @@
 Feature: Charity sees contributions
-@wip @javascript
+@javascript
 Scenario: A charity sees list of providers
 Given the charity is already registered
   And a user is signed in
