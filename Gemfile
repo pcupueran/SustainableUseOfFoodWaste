@@ -10,6 +10,7 @@ gem 'geocoder'
 gem 'underscore-rails'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -28,5 +29,3 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
-
-ruby "2.2.1"
