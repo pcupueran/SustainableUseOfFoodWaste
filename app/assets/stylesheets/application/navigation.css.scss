@@ -1,5 +1,6 @@
 $color: #FAFFFC;
 $background-color: #183718;
+
 header {
   padding: 1em;
   border-radius: 5px;
@@ -21,9 +22,8 @@ header {
 }
 
 #hamburger {
-    display: none;
-  }
-
+  display: none;
+}
 
 #mobile-navigation{
   display: none;
@@ -35,13 +35,16 @@ header {
   background-color: $background-color;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+
   ul {
     padding: 0;
     list-style: none;
+
     li {
       margin-top: 20px;
       text-align: center;
     }
+
     a {
       text-decoration: none;
       color: $color;
@@ -52,11 +55,13 @@ header {
 #desktop-menu {
   float: right;
   list-style: none;
+
   li {
       margin-top: 20px;
       display: inline;
       margin-right: 20px;
   }
+
   a {
     text-decoration: none;
     color: $color;
@@ -69,6 +74,7 @@ header {
     #logo #site-title {
       display: none;
     }
+
     #hamburger {
       height: 70px;
       display: inline-block;
@@ -77,6 +83,7 @@ header {
       right: 25px;
       cursor: pointer
     }
+
     #desktop-menu {
       display: none;
     }
