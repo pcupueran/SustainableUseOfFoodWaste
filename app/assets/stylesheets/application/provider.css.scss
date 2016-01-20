@@ -1,0 +1,26 @@
+select#distance {
+  height: 37px;
+  position: relative;
+  bottom: 1px;
+  font-size: 1em;
+}
+label {
+  font-size: 1.2em;
+}
+
+#results {
+  li {
+    font-size: 1em;
+    list-style: none;
+    span#provider-title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
+
+  a {
+    display: inline-block;
+    padding: 5px 10px 5px 5px;
+  }
+}
+
