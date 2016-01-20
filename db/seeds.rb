@@ -15,7 +15,7 @@ User.create(organization_name: "Tesco", email: "tesco@gmail.com", password: "pas
 Address.find(3).update(door_number: "127", street: "Ledbury Road", city: "London", country: "UK", postcode: "W11 2AQ")
 
 User.create(organization_name: "Pret a Manger", email: "pretamanger@gmail.com", password: "password", type: "Provider")
-Address.find(4).update(door_number: "127", street: "Ledbury Road", city: "London", country: "UK", postcode: "W11 2AQ")
+Address.find(4).update(door_number: "103", street: "Lansdowne Road", city: "London", country: "UK", postcode: "N17 0NN")
 
 User.create(organization_name: "Waitrose", email: "waitrose@gmail.com", password: "password", type: "Provider")
 Address.find(5).update(door_number: "", street: " Westfield London Shopping Centre", city: "London", country: "United Kingdom", postcode: "W12 7GA")
